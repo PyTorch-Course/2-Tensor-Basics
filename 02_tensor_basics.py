@@ -8,36 +8,76 @@ print(f'y = {y}')
 z = torch.empty(2,3) #matriz de 2D con tres elementos
 print(f'z = {z}')
 
-
-x = torch.rand(2,2)
+# rand, ones, zeros
+# rellena con números aleatorios
+x = torch.rand(5,3)
 print(x)
-'''
-
-# torch.rand(size): random numbers [0, 1]
-x = torch.rand(5, 3)
+# Rellena con 1
+x = torch.ones(5,3)
 print(x)
-
-# torch.zeros(size), fill with 0
-# torch.ones(size), fill with 1
-x = torch.zeros(5, 3)
+# Rellena con 0
+x = torch.zeros(5,3)
 print(x)
 
-# check size
-print(x.size())conda
-
-# check data type
+#obtenemos el tamaño
+print(x.size())
+#obtenemos el tipo de datos
 print(x.dtype)
 
-# specify types, float32 default
-x = torch.zeros(5, 3, dtype=torch.float16)
+# especificamos el tipo de datos
+x = torch.rand(5, 3, dtype=torch.float16)
 print(x)
-
-# check type
 print(x.dtype)
 
-# construct from data
+# construyendo con datos
 x = torch.tensor([5.5, 3])
 print(x.size())
+
+# operaciones
+y = torch.rand(2, 2)
+x = torch.rand(2, 2)
+
+
+#Suma
+z = x + y
+print(z)
+
+z = torch.add(x,y)
+print(z)
+
+y.add_(x)
+print(y)
+
+# Resta
+z = x - y
+print(z)
+
+z = torch.sub(x,y)
+print(z)
+
+y.sub_(x)
+print(y)
+
+#Multiplicación
+
+z = x * y
+print(z)
+
+z = torch.mul(x,y)
+print(z)
+
+y.mul_(x)
+print(y)
+
+#Division
+z = x / y
+print(z)
+z = torch.div(x,y)
+print(z)
+y.div(x)
+print(y)
+
+'''
 
 # requires_grad argument
 # This will tell pytorch that it will need to calculate the gradients for this tensor
@@ -45,25 +85,6 @@ print(x.size())
 # i.e. this is a variable in your model that you want to optimize
 x = torch.tensor([5.5, 3], requires_grad=True)
 
-# Operations
-y = torch.rand(2, 2)
-x = torch.rand(2, 2)
-
-# elementwise addition
-z = x + y
-# torch.add(x,y)
-
-# in place addition, everythin with a trailing underscore is an inplace operation
-# i.e. it will modify the variable
-# y.add_(x)
-
-# substraction
-z = x - y
-z = torch.sub(x, y)
-
-# multiplication
-z = x * y
-z = torch.mul(x,y)
 
 # division
 z = x / y
