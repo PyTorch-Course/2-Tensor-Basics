@@ -100,48 +100,38 @@ z = x.view(-1, 8)  # the size -1 is inferred from other dimensions
 # if -1 it pytorch will automatically determine the necessary size
 print(x.size(), y.size(), z.size())
 
-'''
-
-# requires_grad argument
-# This will tell pytorch that it will need to calculate the gradients for this tensor
-# later in your optimization steps
-# i.e. this is a variable in your model that you want to optimize
-x = torch.tensor([5.5, 3], requires_grad=True)
-
-
-
-
-
-
 
 # Numpy
-# Converting a Torch Tensor to a NumPy array and vice versa is very easy
+# Convertir de tensor a numpy y viceversa
 a = torch.ones(5)
-print(a)
 
-# torch to numpy with .numpy()
+#De torch a numpy con .numpy()
 b = a.numpy()
-print(b)
-print(type(b))
 
-# Carful: If the Tensor is on the CPU (not the GPU),
-# both objects will share the same memory location, so changing one
-# will also change the other
+# Hay que tener cuidado porque tensor esta en la CPU ( no en la GPU), por lo tanto ambos objetos estan en la misma localización de memoria
+# Si se cambia uno, cambia el otro
+
 a.add_(1)
 print(a)
 print(b)
 
-# numpy to torch with .from_numpy(x)
+
+# numpy a torch con .from_numpy(x)
+
 import numpy as np
 a = np.ones(5)
 b = torch.from_numpy(a)
 print(a)
 print(b)
 
-# again be careful when modifying
+# También hay que tener cuidado
 a += 1
 print(a)
 print(b)
+
+print(torch.cuda.is_available())
+
+
 
 # by default all tensors are created on the CPU,
 # but you can also move them to the GPU (only if it's available )
@@ -154,4 +144,12 @@ if torch.cuda.is_available():
     # move to CPU again
     z.to("cpu")       # ``.to`` can also change dtype together!
     # z = z.numpy()
-'''
+
+# requires_grad argument
+# This will tell pytorch that it will need to calculate the gradients for this tensor
+# later in your optimization steps
+# i.e. this is a variable in your model that you want to optimize
+x = torch.tensor([5.5, 3], requires_grad=True)
+
+
+

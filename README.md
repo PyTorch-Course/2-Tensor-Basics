@@ -7,6 +7,7 @@
 5. [Operaciones básicas](#schema5)
 6. [Slicing](#schema6)
 7. [Reshape con torch.view()](#schema7)
+8. [Convertir a numpy y viceversa](#schema8)
 
 <hr>
 
@@ -156,4 +157,38 @@ y = x.view(16)
 - El tamaño -1 se infiere de otras dimensiones,  -1 it pytorch determinará automáticamente el tamaño necesario
 ~~~python
 z = x.view(-1, 8)  
+~~~
+
+
+<hr>
+
+<a name="schema8"></a>
+
+# 8. Convertir a numpy y viceversa
+
+
+~~~python
+a = torch.ones(5)
+~~~
+
+* De torch a numpy con .numpy()
+~~~python    
+b = a.numpy()
+~~~
+Hay que tener cuidado porque tensor esta en la CPU ( no en la GPU), por lo tanto ambos objetos estan en la misma localización de memoria.  Si se cambia uno, cambia el otro
+~~~python
+a.add_(1)
+~~~
+
+
+- De numpy a torch con .from_numpy(x)
+~~~python
+import numpy as np
+a = np.ones(5)
+b = torch.from_numpy(a)
+~~~
+
+También hay que tener cuidado
+~~~python
+a += 1
 ~~~
