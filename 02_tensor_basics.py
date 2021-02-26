@@ -77,6 +77,29 @@ print(z)
 y.div(x)
 print(y)
 
+# Slicing
+x = torch.rand(5,3)
+print(x)
+
+
+# Todas las filas de la columna 0
+print(x[:, 0])
+
+
+#fila 1 y todas las columnas
+print(x[1, :])
+# El elemento 1,1
+print(x[1,1]) 
+#Obtenerl el valor actual, pero solo si hay un solo elemento
+print(x[1,1].item())
+
+# Reshape with torch.view()
+x = torch.randn(4, 4)
+y = x.view(16)
+z = x.view(-1, 8)  # the size -1 is inferred from other dimensions
+# if -1 it pytorch will automatically determine the necessary size
+print(x.size(), y.size(), z.size())
+
 '''
 
 # requires_grad argument
@@ -86,26 +109,10 @@ print(y)
 x = torch.tensor([5.5, 3], requires_grad=True)
 
 
-# division
-z = x / y
-z = torch.div(x,y)
 
-# Slicing
-x = torch.rand(5,3)
-print(x)
-print(x[:, 0]) # all rows, column 0
-print(x[1, :]) # row 1, all columns
-print(x[1,1]) # element at 1, 1
 
-# Get the actual value if only 1 element in your tensor
-print(x[1,1].item())
 
-# Reshape with torch.view()
-x = torch.randn(4, 4)
-y = x.view(16)
-z = x.view(-1, 8)  # the size -1 is inferred from other dimensions
-# if -1 it pytorch will automatically determine the necessary size
-print(x.size(), y.size(), z.size())
+
 
 # Numpy
 # Converting a Torch Tensor to a NumPy array and vice versa is very easy

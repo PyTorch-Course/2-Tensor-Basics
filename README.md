@@ -5,6 +5,8 @@
 3. [Rand, ones, zeros](#schema3)
 4. [Tamaño, Tipos de datos, construir con datos](#schema4)
 5. [Operaciones básicas](#schema5)
+6. [Slicing](#schema6)
+7. [Reshape con torch.view()](#schema7)
 
 <hr>
 
@@ -112,4 +114,46 @@ y.mul_(x)
 z = x / y
 z = torch.div(x,y)
 y.div(x)
+~~~
+
+<hr>
+
+<a name="schema6"></a>
+
+# 6. Slicing
+~~~python
+x = torch.rand(5,3)
+~~~
+- Todas las filas de la columna 0
+~~~python
+x[:, 0]
+~~~
+
+- Fila 1 y todas las columnas
+~~~python
+x[1, :]
+~~~
+- El elemento 1,1
+~~~python
+x[1,1]
+~~~
+- Obtenerl el valor actual, pero solo si hay un solo elemento
+~~~python
+print(x[1,1].item())
+~~~
+
+<hr>
+
+<a name="schema7"></a>
+
+# 7  Reshape con torch.view()
+
+~~~python
+
+x = torch.randn(4, 4)
+y = x.view(16)
+~~~
+- El tamaño -1 se infiere de otras dimensiones,  -1 it pytorch determinará automáticamente el tamaño necesario
+~~~python
+z = x.view(-1, 8)  
 ~~~
